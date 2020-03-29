@@ -5,6 +5,7 @@ const uid = require('../util/uid');
 const StageLayering = require('../engine/stage-layering');
 const getMonitorIdForBlockWithArgs = require('../util/get-monitor-id');
 const MathUtil = require('../util/math-util');
+const Tynan = require('../tynan/tynan');
 
 /**
  * @typedef {object} BubbleState - the bubble state associated with a particular target.
@@ -438,6 +439,14 @@ class Scratch3LooksBlocks {
     }
 
     nextCostume (args, util) {
+        // I will use next costume as the instigator for all future functionality until I put in my own button
+        const blocks = util.target.blocks
+        console.log(blocks._blocks);
+        for (var thing of blocks.getScripts()) {
+            console.log(thing)
+            console.log(typeof thing)
+            console.log(blocks.getOpcode(blocks.getBlock(thing)))
+        }
         this._setCostume(
             util.target, util.target.currentCostume + 1, true
         );
