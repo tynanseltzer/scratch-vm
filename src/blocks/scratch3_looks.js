@@ -440,13 +440,8 @@ class Scratch3LooksBlocks {
 
     nextCostume (args, util) {
         // I will use next costume as the instigator for all future functionality until I put in my own button
-        const blocks = util.target.blocks
-        console.log(blocks._blocks);
-        for (var thing of blocks.getScripts()) {
-            console.log(thing)
-            console.log(typeof thing)
-            console.log(blocks.getOpcode(blocks.getBlock(thing)))
-        }
+        console.trace()
+        Tynan.walk(util.target.blocks)
         this._setCostume(
             util.target, util.target.currentCostume + 1, true
         );
