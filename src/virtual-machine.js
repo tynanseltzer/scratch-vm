@@ -13,6 +13,7 @@ const centralDispatch = require('./dispatch/central-dispatch');
 const ExtensionManager = require('./extension-support/extension-manager');
 const log = require('./util/log');
 const MathUtil = require('./util/math-util');
+const Scratch3MotionBlocks = require('./blocks/scratch3_motion')
 const Runtime = require('./engine/runtime');
 const StringUtil = require('./util/string-util');
 const formatMessage = require('format-message');
@@ -165,6 +166,14 @@ class VirtualMachine extends EventEmitter {
         this.variableListener = this.variableListener.bind(this);
     }
 
+    /**
+     * Tynan Start
+     */
+    tynan_start () {
+        var foo = {STEPS: '10'}
+        var bar = {target: this.runtime.targets[1]}
+        this.runtime.getOpcodeFunction('motion_movesteps')(foo,bar);
+    }
     /**
      * Start running the VM - do this before anything else.
      */
