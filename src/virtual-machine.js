@@ -40,6 +40,7 @@ const CORE_EXTENSIONS = [
     // 'myBlocks'
 ];
 
+const Tynan = require("./tynan/tynan")
 /**
  * Handles connections between blocks, stage, and extensions.
  * @constructor
@@ -152,6 +153,9 @@ class VirtualMachine extends EventEmitter {
         this.runtime.on(Runtime.HAS_CLOUD_DATA_UPDATE, hasCloudData => {
             this.emit(Runtime.HAS_CLOUD_DATA_UPDATE, hasCloudData);
         });
+        this.runtime.on(Runtime.HANDLE_BLOCK_PRINT, printData => {
+            this.emit(Runtime.HANDLE_BLOCK_PRINT, printData);
+        });
 
         this.extensionManager = new ExtensionManager(this.runtime);
 
@@ -173,6 +177,11 @@ class VirtualMachine extends EventEmitter {
         var foo = {STEPS: '10'}
         var bar = {target: this.runtime.targets[1]}
         this.runtime.getOpcodeFunction('motion_movesteps')(foo,bar);
+    }
+    print_blocks() {
+        var sprite = this.runtime.targets[1];
+        var ret = Tynan.walk(sprite.blocks)
+        this.runtime.emit(Runtime.HANDLE_BLOCK_PRINT, ret);
     }
     /**
      * Start running the VM - do this before anything else.

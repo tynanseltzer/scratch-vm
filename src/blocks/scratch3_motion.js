@@ -63,7 +63,6 @@ class Scratch3MotionBlocks {
 
     moveSteps (args, util) {
         // eslint-disable-next-line no-console
-        console.trace()
         const steps = Cast.toNumber(args.STEPS);
         const radians = MathUtil.degToRad(90 - util.target.direction);
         const dx = steps * Math.cos(radians);

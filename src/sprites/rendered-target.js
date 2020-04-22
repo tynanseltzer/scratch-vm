@@ -222,6 +222,10 @@ class RenderedTarget extends Target {
         return 'EVENT_TARGET_VISUAL_CHANGE';
     }
 
+    static get handleBlockPrint () {
+        return 'handleBlockPrint';
+    }
+
     /**
      * Rotation style for "all around"/spinning.
      * @type {string}

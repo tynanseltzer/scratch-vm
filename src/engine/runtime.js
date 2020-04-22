@@ -552,6 +552,10 @@ class Runtime extends EventEmitter {
         return 'TARGETS_UPDATE';
     }
 
+    static get HANDLE_BLOCK_PRINT () {
+        return "HANDLE_BLOCK_PRINT";
+    }
+
     /**
      * Event name for monitors update.
      * @const {string}
