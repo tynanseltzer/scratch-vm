@@ -44,6 +44,11 @@ class Tynan {
             b_node.right = this.walkHelper(blocks, blocks.getBlock(blocks.getNextBlock(oneBlock.id)))
             return b_node;
         }
+
+        else if (opcode.localeCompare('pen_penDown') === 0 || opcode.localeCompare('pen_penUp') === 0 || opcode.localeCompare('pen_clear') === 0) {
+            b_node.right = this.walkHelper(blocks, blocks.getBlock(blocks.getNextBlock(oneBlock.id)));
+            return b_node;
+        }
         else if (opcode.localeCompare('control_repeat') == 0) {
             b_node.args.push(this.getNumberItem(blocks, oneBlock, "TIMES"));
             b_node.right = this.walkHelper(blocks, blocks.getBlock(blocks.getNextBlock(oneBlock.id)));

@@ -1509,6 +1509,7 @@ class Runtime extends EventEmitter {
         return this._primitives[opcode];
     }
 
+
     /**
      * Return whether an opcode represents a hat block.
      * @param {!string} opcode The opcode to look up.
